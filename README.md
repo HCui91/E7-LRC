@@ -21,3 +21,16 @@ Note: 18e-3 means 18*10^{-3}
 
 ### From your experiment data
 
+I would recommand the arrangement of dataset below in a comma delimiated file. 
+
+| \#frequency(Hz) | peak-to-peak voltage(volt) | unc voltage (volt) | y0   | y1   |
+| --------------- | -------------------------- | ------------------ | ---- | ---- |
+| 10000           | 2.30                       | 0.05               | 2.30 | 0.50 |
+
+But feel free to change the order of columns, and update it in the code line 28&29. Change the order of variables. 
+
+```python
+freq, volt, delta_volt, y0, y1, delta_y = np.loadtxt("low_damp.csv",delimiter=",",unpack=True)   # Change file name and delimiter if required
+freq_1, volt_1, delta_volt_1, y0_1, y1_1 = np.loadtxt("high_damp.csv",delimiter=",",unpack=True)
+```
+

@@ -25,8 +25,8 @@ print("Theoretical amplitude resonance is ",omega,"radian per second, or",omega/
 # CSV in form: frequency(Hz)	peak-to-peak voltage(volt)	unc voltage (volt)	y0 (volt)	y1 (volt)
 # There are 2 sets of data corresponding to high damping and low damping. 
 # where y0 and y1 are the Lissajous Figures on the oscilliscope.
-freq, volt, delta_volt, y0, y1, delta_y = np.loadtxt("low_damp.csv",delimiter="	",unpack=True)   # Change file name and delimiter if required
-freq_1, volt_1, delta_volt_1, y0_1, y1_1 = np.loadtxt("high_damp.csv",delimiter="	",unpack=True)
+freq, volt, delta_volt, y0, y1, delta_y = np.loadtxt("low_damp.csv",delimiter=",",unpack=True)   # Change file name and delimiter if required
+freq_1, volt_1, delta_volt_1, y0_1, y1_1 = np.loadtxt("high_damp.csv",delimiter=",",unpack=True)
 
 ##### Data modification #####
 freq=2*np.pi*freq     # Convert to angular frequency
