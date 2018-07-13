@@ -9,9 +9,6 @@ omega=0
 #2 experiment data sets
 freq, volt, delta_volt, y0, y1, delta_y=[0,0,0,0,0,0]
 freq_1, volt_1, delta_volt_1, y0_1, y1_1=[0,0,0,0,0]
-#plotting coordinates
-x=0
-y=0
 
 ##### Theoritical value #####
 L=18e-3         #Inductance of the inductor in Henry (H)
@@ -48,6 +45,9 @@ delta_y1y0_1=np.sqrt((delta_volt_1/y1_1)**2+(delta_volt_1/y0_1)**2)*(y1_1/y0_1)
 delta_phase_1 = delta_y1y0_1/np.sqrt(1-(y1_1/y0_1)**2)
 
 ##### Correction to phase angles #####
+#Reset counters
+x=0
+y=0
 for x in range(0,36):
     if freq[x] >= 28e3*2*np.pi:
         phase[x]=np.pi-phase[x]
