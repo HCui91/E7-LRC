@@ -34,3 +34,14 @@ freq, volt, delta_volt, y0, y1, delta_y = np.loadtxt("low_damp.csv",delimiter=",
 freq_1, volt_1, delta_volt_1, y0_1, y1_1 = np.loadtxt("high_damp.csv",delimiter=",",unpack=True)
 ```
 
+## Tricks in coding
+
+### Better way to display axis
+
+In the plot of phase angle, it is more convenient to display y-axis in unit of pi. On line 93, I used plt.yticks to modify the display of axis.
+
+```python
+plt.yticks(np.arange(0,np.pi+0.1,step=0.25*np.pi), ('0',r'$\frac{1}{4} \pi$',r'$\frac{1}{2} \pi$',r'$\frac{3}{4} \pi$',r'$\pi$'))
+```
+
+It will devide pi into 4 ticks with step 0.25*pi, and display them on the axis. Text type of display is used to render `\pi` in Tex (matplotlib supports inline math with `r''` in text contents). 

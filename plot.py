@@ -48,10 +48,10 @@ delta_phase_1 = delta_y1y0_1/np.sqrt(1-(y1_1/y0_1)**2)
 #Reset counters
 x=0
 y=0
-for x in range(0,36):
+for x in range(0,len(freq)):       # Run through all frequencies
     if freq[x] >= 28e3*2*np.pi:
         phase[x]=np.pi-phase[x]
-for y in range(0,34):
+for y in range(0,len(freq_1)):
     if freq_1[y] >= 28e3*2*np.pi:
         phase_1[y]=np.pi-phase_1[y]
 
@@ -62,7 +62,7 @@ for y in range(0,34):
 
 ##### Amplitude graph #####
 #Decide size of the output plot
-plt.figure(1,figsize=(10,9))
+plot0=plt.figure(1,figsize=(10,9))
 plt.errorbar(freq,volt,yerr=delta_volt,fmt='o',label="Low damping")         # Plot with errorbar
 plt.errorbar(freq_1,volt_1,yerr=delta_volt_1,fmt='D',label="High damping")
 #Graph configuration
@@ -78,16 +78,19 @@ plt.grid()
 plt.savefig("E7_amplitude")
 
 ##### Phase angle graph #####
-plt.figure(2,figsize=(10,7))     # Generate another canvas
+plot1=plt.figure(2,figsize=(10,7))     # Generate another canvas
 plt.errorbar(freq,phase,yerr=delta_phase,fmt='o',label="Low damping")       # Plot with errorbar
 plt.errorbar(freq_1,phase_1,yerr=delta_phase_1,fmt='D',label="High damping")
 plt.plot((50000,280000),(np.pi/2,np.pi/2),'--',label="Phase angle=pi/2")    # A reference line at the phase angle where should have resonance
+#Graph modification
 plt.title("Plot of phase resonance data")
 plt.xlabel("Angular frequence(radian per second)")
 plt.ylabel("Phase angle(radian)")
 plt.legend(loc="best")
 plt.ylim(0,np.pi)
 plt.xlim(np.min(freq)-1000,np.max(freq)+1000)
+#A better display of y axis in pi fractions.
+plt.yticks(np.arange(0,np.pi+0.1,step=0.25*np.pi), ('0',r'$\frac{1}{4} \pi$',r'$\frac{1}{2} \pi$',r'$\frac{3}{4} \pi$',r'$\pi$'))
 plt.grid()
 #plt.show()
 plt.savefig("E7_phase")
